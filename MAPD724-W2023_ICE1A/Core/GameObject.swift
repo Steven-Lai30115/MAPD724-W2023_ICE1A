@@ -1,7 +1,9 @@
 import GameplayKit
 import SpriteKit
 
-class GameObject: SKSpriteNode {
+class GameObject: SKSpriteNode, GameProtocol {
+   
+    
     var horizontalSpeed: CGFloat?
     var verticalSpeed: CGFloat?
     var width: CGFloat?
@@ -35,21 +37,20 @@ class GameObject: SKSpriteNode {
     }
     
     // Life- Cycle functions
-    
-    func Start(){
-        
+    func Start() {
+        <#code#>
     }
     
-    func Update(){
-        
+    func Update() {
+        <#code#>
     }
     
-    
-    func CheckBounds(){
-        
+    func CheckBounds() {
+        <#code#>
     }
     
-    func Reset(){
-        
+    func Reset() {
+        <#code#>
     }
+   
 }
