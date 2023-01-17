@@ -5,26 +5,40 @@ import AVFoundation
 
 class GameScene: SKScene {
         
-    private var lastUpdateTime : TimeInterval = 0
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    var ocean1 : Ocean?
+    var ocean2 : Ocean?
+    var player : Player?
     
     override func sceneDidLoad() {
-        print("Loaded gamescene")
+        name = "GAME"
         
+        // add the ocean
+        ocean1 = Ocean()
+        ocean1?.Start()
+        ocean1?.Reset()
+        addChild(ocean1!)
+        
+        ocean2 = Ocean()
+        ocean2?.Start()
+        ocean2?.position.y = -773
+        addChild(ocean2!)
+        
+        player = Player()
+        player?.Start()
+        addChild(player!)
     }
     
     
     func touchDown(atPoint pos : CGPoint) {
-        print("Touch down")
+        player?.TouchMove(newPos: CGPoint(x: pos.x, y: -495))
     }
     
     func touchMoved(toPoint pos : CGPoint) {
-        print("Touch moved")
+        player?.TouchMove(newPos: CGPoint(x: pos.x, y: -495))
     }
     
     func touchUp(atPoint pos : CGPoint) {
-        print("Touch up")
+        player?.TouchMove(newPos: CGPoint(x: pos.x, y: -495))
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -46,6 +60,8 @@ class GameScene: SKScene {
     
     
     override func update(_ currentTime: TimeInterval) {
-        
+        ocean1?.Update()
+        ocean2?.Update()
+        player?.Update()
     }
 }
